@@ -75,12 +75,12 @@ void score_out(int **score, int column, int row, char **subject, int tmp)
 	printf("\t평균\t등급\n");
 	for (int i = 0; i < row; i++)
 	{
-		printf("%d\t", i + 1);	//학생번호
+		printf("%d\t", i + 1);	//학생번호표시
 		for (int j = 0; j < row; j++)
 		{
 			if (j < 1)	//한줄만 출력하기 위해 
 			{
-				for (int k = 0; k < column; k++)
+				for (int k = 0; k < column; k++)	//입력값 출력
 				{
 					printf("%3d\t", *(score + k*column + i));
 					temp[k] = *(score + k*column + i);
