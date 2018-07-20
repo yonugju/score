@@ -1,112 +1,127 @@
+
 #include<stdio.h>
 
-void score_in(int **score, int column, int row, char **subject);
-void score_out(int **score, int column, int row, char **subject);
-void subject_in(char **subject, int num, int length);
-void subject_out(char **subject, int num, int length);
-int grade(double x);
-int sum_array(int *array, int num);
-#define st_MAX 10	//학생 최대수
-#define sub_MAX 5	//과목 최대수	
-#define ch_MAX 9	//문자열 최대수
-
+void score_in(char **subject, int **score, int col, int row);
+void subject_in(char **subject, int col);
+void stu_num(int row);
+void total_output(char **subject, int **score, int col, int row);
+char grade(float x);
+# define st_max 10	//학생 최대수
+# define sb_max 6	//과목최대수
+# define str_max 9	//스트링최대수
 int main()
 {
-	int score[sub_MAX][st_MAX];	//점수를 넣는 배열
-	int st_num;	//학생수
-	char subject[sub_MAX][ch_MAX];//과목명을 넣는 배열
-	int sb_num;	//입력받을 과목수
-	printf("입력할 과목수를 입력하시오\n");
-	scanf("%d", &sb_num);
-	printf("입력할 학생수를 입력하시오\n");
+	int score[st_max][str_max];
+	char subject[sb_max][str_max];
+	int sub_num;	//과목 수를 받는 매개변수
+	int st_num;		//학생 수를 받는 매개변수
+
+	printf("과목수를 입력하시오\n");
+L1:	scanf("%d", &sub_num);
+	if (sub_num<0 || sub_num>st_max)
+	{
+		printf(" 0~10사이의 숫자를 입력하시오.\n");
+		goto L1;
+	}
+L2:
+	printf("학생수를 입력하시오\n");
 	scanf("%d", &st_num);
-	subject_in(subject, sb_num, ch_MAX);
-	subject_out(subject, sb_num, ch_MAX);
-	score_in(score, sb_num, st_num, subject, ch_MAX);
-	score_out(score, sb_num, st_num, subject, ch_MAX);
-}
-
-void subject_in(char **subject, int num, int length)
-{
-	for (int i = 0; i < num; i++)
+	if (st_num<0 || st_num>sb_max)
 	{
-		printf("입력받을 과목을 차례대로 입력하시오.");
-		scanf("%s", subject + i*length);
-
+		printf(" 0~5사이의 숫자를 입력하시오.\n");
+		goto L2;
+	}
+	subject_in(subject, sub_num);
+	score_in(subject, score, sub_num, st_num);
+	stu_num(st_num);
+	total_output(subject, score, sub_num, st_num);
+	return 0;
+}
+void subject_in(char **subject, int col)
+{
+	for (int i = 0; i < col; i++)
+	{
+		printf("입력받을 과목명을 입력하시오.\n");
+		scanf("%s", subject + i*col);
 	}
 }
 
-void subject_out(char **subject, int num, int length)
+void score_in(char **subject, int **score, int col, int row)
 {
-	for (int i = 0; i < num; i++)
-	{
-		printf("입력받은 과목 :%s.\n", subject + i*length);
-
-	}
-}
-
-void score_in(int **score, int column, int row, char **subject, int tmp)
-{
-	for (int i = 0; i < column; i++)
+	for (int i = 0; i < col; i++)
 	{
 		for (int j = 0; j < row; j++)
 		{
-			printf("%d번학생의 %s성적입력하시오.\n", j + 1, subject + i * tmp);
+			printf("%d번 학생의 %s 점수를 입력하시오.\n", j + 1, subject + i*col);
 			scanf("%d", score + i * row + j);
-			if (*(score + i * row + j) < 0 || *(score + i * row + j) >100)
+			if (*(score + i * row + j)>100 || score + i * row + j < 0)
 			{
-				printf("0~100사이를 입력하시오.\n");
+				printf("0~100사이의 숫자를 입력하시오.\n");
 				j--;
 			}
 		}
 	}
+	//for (int i = 0; i < row; i++)
+	//{
+	//	for (int j = 0; j < row; j++)
+	//	{
+	//		printf("%d번 학생의 점수 %d\n", j + 1, *(score + i * row + j));
+	//	}
+	//}
 }
-//00 10 20
-//01 11 21
-void score_out(int **score, int column, int row, char **subject, int tmp)
+void stu_num(int row)
 {
-	int temp[st_MAX];	//점수를 임시적으로 저장할 배열 선언
-	int temp1[st_MAX];	//점수의 합을 저장할 배열 선언
-	float average;	//평균값을 저장할 실수형 변수 선언
-	for (int i = 0; i < column; i++)
-	{
-		printf("\t%s", subject + i*tmp);
-	}
-	printf("\t평균\t등급\n");
 	for (int i = 0; i < row; i++)
 	{
-		printf("%d\t", i + 1);	//학생번호표시
-		for (int j = 0; j < row; j++)
-		{
-			if (j < 1)	//한줄만 출력하기 위해 
-			{
-				for (int k = 0; k < column; k++)	//입력값 출력
-				{
-					printf("%3d\t", *(score + k*column + i));
-					temp[k] = *(score + k*column + i);
-				}
-			}
-			temp1[i] = sum_array(temp, row);
-		}
-		average = temp1[i] / column;
-		printf("%5.2f\t%3c", average, grade(average));
-
-		printf("\n");
+		printf("\t%d번", i + 1);;
 	}
+	printf("\n");
 }
-
-int sum_array(int *array, int row)
+void total_output(char **subject, int **score, int col, int row)
 {
-	int i, sum = 0;
-	for (i = 0; i < row; i++)
-		sum += array[i];
-	return sum;
+	int temp1[st_max][str_max];
+	int temp[st_max];	//입력받은 [i]행의 score값 전체를 합하여 저장할 배열선언
+	float average;
+	for (int i = 0; i < col; i++)//과목명을 보여주기 위한 반복문
+	{
+		printf("%s", subject + i*col);
+		for (int j = 0; j < row; j++)//점수를 보여주기 위한 반복문
+		{
+			printf("\t%d", *(score + i*row + j));
+			temp1[i][j] = *(score + i*row + j);
+			//printf("%d\n", temp1[i][j]);	값이 잘 들어왔나 중간체크
+		}
+		for (int a = 0; a < row; a++)	//temp에 값을 저장하기 위한 이중반복문
+		{
+			temp[a] = 0;
+			for (int b = 0; b < col; b++)
+			{
+				temp[a] += temp1[b][a];
+				//printf("%d", temp[a])	;//값이 잘 들어왔나 중간체크
+			}
+		}
+		printf("\n");	// 한칸 띄고
+	}
+	printf("평균");
+	for (int i = 0; i < row; i++)
+	{
+		average = temp[i] / col;
+		printf("\t%5.2f", average);
+	}
+	printf("\n");	// 한칸 띄고
+	printf("등급");
+	for (int i = 0; i < row; i++)
+	{
+		average = temp[i] / col;
+		printf("\t%c", grade(average));
+	}
+	printf("\n");	// 한칸 띄고
 }
-
-int grade(double x)
+char grade(float x)
 {
 	int gd;
-	switch ((int)x / 10){
+	switch ((int)x / 10)
+	{
 	case 10:
 	case 9: gd = 'A'; break;
 	case 8: gd = 'B'; break;
