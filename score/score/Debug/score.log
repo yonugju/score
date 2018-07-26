@@ -1,32 +1,29 @@
-﻿빌드 시작: 2018-07-17 오후 8:59:42
-     1>2 노드의 "C:\Users\권영주\documents\visual studio 2013\Projects\score\score\score.vcxproj" 프로젝트(Build 대상)입니다.
+﻿빌드 시작: 2018-07-26 오후 3:11:02
+     1>2 노드의 "C:\Users\권영주\Documents\GitHub\score\score\score\score.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
          main.c
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(23): warning C4047: '함수' : 'char **'의 간접 참조 수준이 'char [5][9]'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(23): warning C4024: 'subject_in' : 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(24): warning C4047: '함수' : 'char **'의 간접 참조 수준이 'char [5][9]'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(24): warning C4024: 'subject_out' : 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(25): warning C4047: '함수' : 'int **'의 간접 참조 수준이 'int [5][10]'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(25): warning C4024: 'score_in' : 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(25): warning C4047: '함수' : 'char **'의 간접 참조 수준이 'char [5][9]'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(25): warning C4024: 'score_in' : 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(25): warning C4020: 'score_in' : 실제 매개 변수가 너무 많습니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(26): warning C4047: '함수' : 'int **'의 간접 참조 수준이 'int [5][10]'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(26): warning C4024: 'score_out' : 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(26): warning C4047: '함수' : 'char **'의 간접 참조 수준이 'char [5][9]'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(26): warning C4024: 'score_out' : 형식 및 실제 매개 변수 4의 형식이 서로 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(26): warning C4020: 'score_out' : 실제 매개 변수가 너무 많습니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(49): warning C4029: 선언된 정식 매개 변수 목록이 정의와 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(56): warning C4047: '>' : 'int *'의 간접 참조 수준이 'int'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(67): warning C4029: 선언된 정식 매개 변수 목록이 정의와 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(86): warning C4047: '=' : 'int'의 간접 참조 수준이 'int *'과(와) 다릅니다.
-     1>c:\users\권영주\documents\visual studio 2013\projects\score\score\main.c(91): warning C4244: '=' : 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(63): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(71): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(105): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(116): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(118): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(123): warning C4047: '>' : 'int *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(134): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(145): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(148): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(151): warning C4047: '=' : 'int'의 간접 참조 수준이 'int *'과(와) 다릅니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(154): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(157): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(166): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(168): warning C4244: '=' : 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(173): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(175): warning C4244: '=' : 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\권영주\documents\visual studio 2013\Projects\score\Debug\score.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\권영주\documents\visual studio 2013\Projects\score\Debug\score.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\권영주\documents\visual studio 2013\Projects\score\Debug\score.lib" /MACHINE:X86 Debug\main.obj
-         score.vcxproj -> C:\Users\권영주\documents\visual studio 2013\Projects\score\Debug\score.exe
-     1>"C:\Users\권영주\documents\visual studio 2013\Projects\score\score\score.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\권영주\Documents\GitHub\score\score\Debug\score.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\권영주\Documents\GitHub\score\score\Debug\score.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\권영주\Documents\GitHub\score\score\Debug\score.lib" /MACHINE:X86 Debug\main.obj
+         score.vcxproj -> C:\Users\권영주\Documents\GitHub\score\score\Debug\score.exe
+     1>"C:\Users\권영주\Documents\GitHub\score\score\score\score.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:01.46
+경과 시간: 00:00:00.78
