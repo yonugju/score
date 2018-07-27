@@ -1,182 +1,136 @@
 #include<stdio.h>
 #include<malloc.h>
-
-
-# define st_max 10	//학생 최대수
-# define sb_max 6	//과목최대수
-# define str_max 9	//스트링최대수
-
-
-
-typedef struct _str_arr
-{
+typedef struct str_arr{
 	char **base;
-	size_t col, row;
-};
-
-
-struct _int_2D_arr
-{
+	size_t row, col;
+}str_arr;
+typedef struct int_2D_arr{
 	int **base;
-	size_t col, row;
-};
+	size_t row, col;
+}int_2D_arr;
 
-typedef struct _str_arr str_arr;
-typedef struct _int_2D_arr int_2D_arr;
-
-void score_in(str_arr *a, int_2D_arr *b);
-void subject_in(str_arr *a);
-void stu_num(str_arr *a);
-void total_output(str_arr *a, int_2D_arr *b);
-void first_in(str_arr *a);
+#define st_MAX 10	//학생 최대수
+#define sb_MAX 6	//과목 최대수
+#define str_MAX 9	//스트링 최대수
+void prompt(str_arr *subject, int_2D_arr *score);
+int error(int num, int max);
+void subname_in(str_arr *subject);
+void score_in(str_arr *subject, int_2D_arr *score);
+void subname_out(int_2D_arr *score);
+void score_out(str_arr *subject, int_2D_arr *score);
 char grade(float x);
-//정적 배열은 컴파일 시점에 메모리 할당
-//동적 배열은 실행 시점에 메모리 할당
-int main()
-{
-	int **base1;	//2차원 배열 할당 base1
-	base1 = (int**)malloc(sizeof(int *)*st_max);
-	for (int i = 0; i < st_max; i++)
-	{
-		base1[i] = (int *)malloc(sizeof(int)*str_max);
-	}
-	char **base2;	//2차원 배열 할당 base2
-	base2 = (char**)malloc(sizeof(char *)*sb_max);
-	for (int i = 0; i < sb_max; i++)
-	{
-		base2[i] = (char *)malloc(sizeof(char)*str_max);
-	}
 
-
-	str_arr subject;
+int main(){
 	int_2D_arr score;
+	str_arr subject;
+	//char sub_arr[sb_MAX][str_MAX];
+	//	int score_arr[st_MAX][str_MAX];
+	subject.row = str_MAX;
+	prompt(&subject, &score);
+	char **sub_arr = (char**)malloc((char*)*&(subject.col));
+	int **score_arr = (int**)malloc((int*)*&(score.row));
+		subject.base = sub_arr;
+		score.base = score_arr;
+		subname_in(&subject);
+		score_in(&subject, &score);
+		subname_out(&score);
+		score_out(&subject, &score);
+		free(sub_arr);
+		free(score_arr);
+		return 0;
+}
+void prompt(str_arr *subject, int_2D_arr *score){
+	do{
+		printf("학생 수를 입력하시오.\n");
+		scanf("%d", &score->row);
+	} while (error(score->row, st_MAX));
 
-	score.base = base1;
-	subject.base = base2;
-
-	first_in(&subject);
-	subject_in(&subject);
-	score_in(&subject, &score);
-	stu_num(&subject);
-	total_output(&subject, &score);
-
-	for (int i = 0; i < subject.col; i++)	//base1 메모리해제
-
-	{
-		free(base1[i]);
+	int temp;
+	do{
+		printf("과목 수를 입력하시오.\n");
+		scanf("%d", &temp);
+	} while (error(temp, sb_MAX));
+	score->col = temp;
+	subject->col = temp;
+}
+int error(int num, int max){
+	if (num > max || num < 0){
+		printf("0~%d사이를 입력하시오\n", max);
+		return 1;
 	}
-
-	free(base1);
-
-	for (int i = 0; i < subject.row; i++)	//base2 메모리해제
-
-	{
-		free(base2[i]);
-	}
-	free(base2);
-
 	return 0;
-}
-void first_in(str_arr *a)
-{
-	for (int i = 0; i < 1; i++){
-		printf("과목수를 입력하시오\n");
-		scanf("%d", &a->col);
-		if (a->col < 0 || a->col > sb_max)
-		{
-			printf(" 0~6사이의 숫자를 입력하시오.\n");
-			i--;
-		}
-	}
-	for (int i = 0; i < 1; i++)
-	{
-		printf("학생수를 입력하시오\n");
-		scanf("%d", &a->row);
-		if (a->row < 0 || a->row > st_max)
-		{
-			printf(" 0~10사이의 숫자를 입력하시오.\n");
-			i--;
-		}
-	}
+
 }
 
-void subject_in(str_arr *a)
-{
-	for (int i = 0; i < a->col; i++)
-	{
-
+void subname_in(str_arr *subject){
+	for (int i = 0; i < subject->col; i++){
 		printf("입력받을 과목명을 입력하시오.\n");
-		scanf("%s", (a->base) + i*str_max);
-		printf("입력받은 과목명:%s\n", (a->base) + i*str_max);
+		scanf("%s", (char*)(subject->base) + i*(subject->row));
 	}
 }
-
-void score_in(str_arr *a, int_2D_arr *b)
-{
-	for (int i = 0; i < a->col; i++)
-	{
-		for (int j = 0; j < a->row; j++)
-		{
-
-			printf("%d번 학생의 %s 점수를 입력하시오.\n", j + 1, (a->base) + i*str_max);
-			scanf("%d", b->base + i * a->row + j);
-			if (*(b->base + i * a->row + j) >100 || *(b->base + i * a->row + j) < 0)
-			{
-				printf("0~100사이의 숫자를 입력하시오.\n");
-				j--;
-			}
+//과목 1	2	3	4	5	6
+//국어
+//영어
+//수학
+//불어
+void score_in(str_arr *subject, int_2D_arr *score){
+	for (int i = 0; i < score->col; i++){
+		for (int j = 0; j < score->row; j++){
+			printf("%d번의 %s성적을 입력하시오\n", j + 1, (char*)(subject->base) + i*(subject->row));
+			scanf("%d", score->base + i * score->row + j);
 		}
 	}
-
 }
-void stu_num(str_arr *a)
-{
-	for (int i = 0; i < a->row; i++)
-	{
-		printf("\t%d번", i + 1);;
+void subname_out(int_2D_arr *score){
+	printf("과목\t");
+	for (int i = 0; i < score->row; i++){
+		printf("%d\t", i + 1);
 	}
 	printf("\n");
 }
-void total_output(str_arr *a, int_2D_arr *b)
-{
-	int temp1[st_max][str_max];
-	int temp[st_max];	//입력받은 [i]행의 score값 전체를 합하여 저장할 배열선언
-	float average;
-	for (int i = 0; i < a->col; i++)//과목명을 보여주기 위한 반복문
-	{
-		printf("%s", (a->base) + i*str_max);
-		for (int j = 0; j < a->row; j++)//점수를 보여주기 위한 반복문
-		{
-			printf("\t%d", *(b->base + i*a->row + j));
-			temp1[i][j] = *(b->base + i*a->row + j);
-			//	printf("%d\n", temp1[i][j]);	//값이 잘 들어왔나 중간체크
+void score_out(str_arr *subject, int_2D_arr *score){
+	int temp1[st_MAX][st_MAX] ;
+	int temp2[st_MAX];
+	/*int temp1[st_MAX*sb_MAX];
+	int temp2 = score->row;질문2*/
+	/*int *temp1 = (int*)malloc(score->row);
+	int *temp2 = (int*)malloc(1 * (score->row*score->col));*/
+	float average = 0;
+	for (int i = 0; i < score->col; i++){
+		printf("%s\t", (char*)(subject->base) + i*(subject->row));
+		for (int j = 0; j < score->row; j++){
+			printf("%d\t", *(score->base + i * score->row + j));
+			temp1[i][j] = *(score->base + i * score->row + j);
 		}
-		for (int x = 0; x < a->row; x++)	//temp에 값을 저장하기 위한 이중반복문
-		{
-			temp[x] = 0;
-			for (int b = 0; b < a->col; b++)
-			{
-				temp[x] += temp1[b][x];
-				//printf("%d", temp[a])	;//값이 잘 들어왔나 중간체크
-			}
+		///*	temp1[i+j] = *(score->base + i*score->row + j);*/
+		//	printf("%d", temp1[i + j]);//질문1
+		/*		temp2[j] = *(score->base + i*score->row + j);
+				printf("%d\n", temp2[j]);//질문1*/
+		/*}for (int k = 0; k < score->row; k++){
+			printf("%d\n", temp1[i+temp2]);//질문2
+			}*/
+		/*printf("%d\n", temp2[i]);//질문1*/
+		printf("\n");
+	}
+	printf("평균\t");
+	for (int i = 0; i < score->row; i++){
+		temp2[i] = 0;
+		for (int j = 0; j < score->col; j++){
+			temp2[i] += temp1[j][i];
 		}
-		printf("\n");	// 한칸 띄고
 	}
-	printf("평균");
-	for (int i = 0; i < a->row; i++)
-	{
-		average = temp[i] / a->col;
-		printf("\t%5.2f", average);
+	for (int i = 0; i < score->row;i++){
+			average = temp2[i] / score->col;
+			printf("%5.2f\t", average);
+
 	}
-	printf("\n");	// 한칸 띄고
-	printf("등급");
-	for (int i = 0; i < a->row; i++)
-	{
-		average = temp[i] / a->col;
-		printf("\t%c", grade(average));
+	printf("\n등급\t");
+	for (int i = 0; i < score->row; i++){
+		printf("%c\t", grade(temp2[i] / score->col));
 	}
-	printf("\n");	// 한칸 띄고
 }
+
+
 char grade(float x)
 {
 	int gd;
