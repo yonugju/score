@@ -18,12 +18,12 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="score.c">
+    <ClCompile Include="funtion.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="score.h">
+    <ClInclude Include="funtion.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

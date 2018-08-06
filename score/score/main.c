@@ -1,16 +1,22 @@
-#include "score.h"
-#include <stddef.h>
+#include "funtion.h"
+
+
 int main(){
-	int_2D_arr score = { NULL, };
-	str_arr subject = { NULL, };
-	subject.row = str_MAX;
-	prompt(&subject, &score);
-	subject.base  = (char*)malloc(sizeof(char)*subject.col*subject.row);
-	score.base = (int*)malloc(sizeof(int)*(score.row)*score.col);
-	total_in(&subject, &score);
-	total_out(&subject, &score);
-	free(subject.base);
-	free(score.base);
-	
+
+	conector vector;
+	vector.size = 0;
+	vector.capacity = 0;
+	vector.base = (int*)malloc(sizeof(int));
+	push_back(&vector, 40);
+	push_back(&vector, 50);
+	push_back(&vector, 60);
+	push_back(&vector, 70);
+	push_back(&vector, 80);
+	push_back(&vector, 90);
+	push_back(&vector, 100);
+	push_back(&vector, 110);
+	push_back(&vector, 120);
+	print(&vector);
+	free(vector.base);
 	return 0;
 }
