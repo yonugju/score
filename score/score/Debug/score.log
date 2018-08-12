@@ -1,10 +1,10 @@
-﻿빌드 시작: 2018-08-06 오후 4:20:16
+﻿빌드 시작: 2018-08-12 오후 5:05:06
      1>2 노드의 "C:\Users\권영주\Documents\GitHub\score\score\score\score.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt funtion.c main.c
          main.c
      1>c:\users\권영주\documents\github\score\score\score\main.c(9): warning C4013: 'malloc'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-     1>c:\users\권영주\documents\github\score\score\score\main.c(20): warning C4013: 'free'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\users\권영주\documents\github\score\score\score\main.c(23): warning C4013: 'free'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
          funtion.c
          코드를 생성하고 있습니다...
        Link:
@@ -15,4 +15,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:01.27
+경과 시간: 00:00:01.60

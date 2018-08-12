@@ -3,7 +3,7 @@
 
 int main(){
 
-	conector vector;
+	container vector;
 	vector.size = 0;
 	vector.capacity = 0;
 	vector.base = (int*)malloc(sizeof(int));
@@ -12,11 +12,15 @@ int main(){
 	push_back(&vector, 60);
 	push_back(&vector, 70);
 	push_back(&vector, 80);
-	push_back(&vector, 90);
-	push_back(&vector, 100);
-	push_back(&vector, 110);
-	push_back(&vector, 120);
+	insert(&vector, 3, 300);
+	back(&vector);
+	erase(&vector, 2, 4);
+	//	resize(&vector, 2);
+	shrink_to_fit(&vector);
+	size(&vector);
+	capacity(&vector);
 	print(&vector);
 	free(vector.base);
 	return 0;
 }
+
